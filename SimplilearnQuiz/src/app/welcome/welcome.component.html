@@ -1,0 +1,25 @@
+<div class="container bg-light py-3 mt-5 ">
+ <div class="row">
+   <div class="col-md-7">
+     <img src="https://pbs.twimg.com/profile_images/707557253637742592/8xPxraAg_400x400.jpg" alt="" srcset="">
+   </div>
+   <div class="col-md-5"> 
+
+     <h1 class="display-5 fw-bold">Welcome To Simplilearn Quiz</h1>
+     <p class="col-md-8 fs-4">This quiz will contain total question 9 .Each question hold 10 points. </p>
+     <h4>Rule:</h4>
+     <ol>
+       <li>Correct answer gives you 10 points.</li>
+       <li>Incorrect answer gives you - 10 points.</li>
+       <li>You will have 7 sec around  answer each question.</li>
+      </ol>
+      <form>
+        <div class="form-group">
+          <label for="exampleImputname">Enter Your Name</label>
+          <input #name type="name" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary"routerLink="/question" (click)="startQuiz()">Start The Quiz!!</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="d-flex justify-content-between p-3">
+            <div class="image">
+                <img src="https://pbs.twimg.com/profile_images/707557253637742592/8xPxraAg_400x400.jpg" width="90"
+                    class="d-inline-block align-top" alt="">
+            </div>
+            <div class="quiz header">
+                <h4>Phase 2 Online Test</h4>
+                <span>Welcome {{name}}</span>
+            </div>
+        </div>
+<ng-container *ngIf="!isQuizCompleted">
+
+    <div class="d-flex justify-content-around py-3">
+        <div class="score">
+            <h5>{{points}} points</h5>
+        </div>
+        <div class="remain qustion">
+            <h5>Question{{currentQuestion+1}} of {{questionList.length}} </h5>
+        </div>
+        <div class="timer">
+            <h5>{{counter}} sec</h5>
+        </div>
+    </div>
+    <div class="progress mb-2">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [ngStyle]="{'width':progress+'%'}"
+        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="question">
+        <div class="card">
+            <h6>{{questionList[currentQuestion]?.questionText}}</h6>
+        </div>
+    </div>
+    <div class="Option">
+        <ol *ngFor="let option of questionList[currentQuestion].options">
+            <li (click)="answer(currentQuestion+1,option)">
+                <div appChangeBg [isCorrect]="option.correct" class="card">
+                    {{option.text}}
+                </div>
+            </li>
+        </ol>
+    </div>
+    <div class="d-flex justify-content-between">
+        <button [disabled]="currentQuestion===0" class="btn" (click)="preQuestion()"><i class="fa text-primary fa-solid fa-chevron-left fa-2x"></i></button>
+         <!-- <button class="btn"> <i class="fa text-primary fa-solid fa-circle-notch fa-spin fa-2x"></i></button> -->
+        <button  [disabled]="currentQuestion===8" class="btn"(click)="nextQuestion()"><i class="fa text-primary fa-solid fa-chevron-right fa-2x"></i></button>
+        
+    </div>
+</ng-container>
+<ng-container *ngIf="isQuizCompleted">
+    <div class="d-flex justify-content-between">
+        <img style="width: 10%;" class="img-fliud col-sm-4 mx-ato" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7JJBAKlL3lMfc7ooK4SxwQwhlTo3zUvNVgg&usqp=CAU" alt="" srcset="">
+        <div class="result col-md-6 col-sm-12">
+            <h2>Congratulation!! <br>You Have Completed Quiz <br> See Your Result Below:</h2>
+            <P>Total question attempted:{{questionList.length}} </P>
+            <P>Total correct answer:{{correctAnswer}} </P>
+            <P>Total incorrect answer:{{incorrectAnswer}} </P>
+            <P>Your Score:{{points}}</P>
+        </div>
+    </div>
+</ng-container>
+</div>
+</div>
